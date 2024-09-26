@@ -50,6 +50,9 @@ class _CalculatepropinaState extends State<Calculatepropina> {
         ],
       ),
       body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+      
         child: Column(
          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
@@ -57,21 +60,25 @@ class _CalculatepropinaState extends State<Calculatepropina> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  
-                    Input(
+                  Flexible(
+                    flex: 1,
+                    child:Input(
                       labelText: 'Total Cuenta',
                       hintText: '20000',
                       value: _totalCuenta,
                       icon: Icons.attach_money,
                     ),
-                  
+                    ),
                   const SizedBox(width: 10),
-                   Input(
+                  Flexible(
+                    flex: 1,
+                    child:  Input(
                       labelText: 'Porcentaje de propina',
                       hintText: '2',
                       value: _porcentajePropina,
                       icon: Icons.percent,
                   
+                  )
                   ),
                   const SizedBox(width: 10),
                   ElevatedButton(
@@ -100,6 +107,7 @@ class _CalculatepropinaState extends State<Calculatepropina> {
            
           ],
         ),
+          ),
       ),
     );
   }

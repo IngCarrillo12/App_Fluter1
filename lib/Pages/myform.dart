@@ -114,6 +114,8 @@ class _MyformState extends State<Myform> {
       ),
     );
   }
+  
+  
   String _getSelectedCharacteristics() {
   for (int i = 0; i < _characteristics.length; i++) {
     if (_selectedCharacteristics[i]) {

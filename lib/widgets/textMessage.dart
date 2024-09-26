@@ -17,29 +17,36 @@ class Textmessage extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 4.0),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround, 
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Text(
             title,
             style: const TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.bold,
-              fontFamily: 'Courier', 
-            ),
-            ),
-         Row(
-            children: [
-          Icon(icon),
-          Text(
-            message,
-            style: const TextStyle(
-              fontSize: 18,
               fontFamily: 'Courier',
-              fontWeight: FontWeight.w500,
             ),
           ),
-         ],
-         ),
+          Flexible(
+            child: Row(
+              children: [
+                if (icon != null) Icon(icon),
+                const SizedBox(width: 10), 
+                Flexible(
+                  child: Text(
+                    message,
+                    style: const TextStyle(
+                      fontSize: 18,
+                      fontFamily: 'Courier',
+                      fontWeight: FontWeight.w500,
+                    ),
+                    overflow: TextOverflow.visible,
+                    softWrap: true, 
+                  ),
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );

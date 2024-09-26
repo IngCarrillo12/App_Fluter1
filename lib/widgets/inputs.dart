@@ -26,7 +26,7 @@ class Input extends StatelessWidget {
         child: TextFormField(
           keyboardType: TextInputType.number,
           inputFormatters: <TextInputFormatter>[
-            FilteringTextInputFormatter.digitsOnly
+            FilteringTextInputFormatter.allow(RegExp(r'[\d.]')),
           ],
           decoration: InputDecoration(
             enabledBorder: const UnderlineInputBorder(

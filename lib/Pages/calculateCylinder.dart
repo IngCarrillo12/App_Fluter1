@@ -1,5 +1,4 @@
 import 'dart:math';
-
 import 'package:first_task/widgets/inputs.dart';
 import 'package:first_task/widgets/textMessage.dart';
 import 'package:flutter/material.dart';
@@ -20,6 +19,7 @@ class _CalculatecylinderState extends State<Calculatecylinder> {
   double resultadoAreaT = 0;
   double resultadoVolumen = 0;
   String messageError = '';
+
   void Calcular() {
     setState(() {
       if (_radio.text.isEmpty || _altura.text.isEmpty) {
@@ -40,11 +40,14 @@ class _CalculatecylinderState extends State<Calculatecylinder> {
       resultadoVolumen = pi * pow(radio, 2) * altura;
     });
   }
+
   @override
   Widget build(BuildContext context) {
+    
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Calculadora de area y volumen cilindrico"),
+        title: const Text("Calculadora de área y volumen cilíndrico"),
         actions: [
           IconButton(
             icon: const Icon(Icons.home),
@@ -55,48 +58,65 @@ class _CalculatecylinderState extends State<Calculatecylinder> {
         ],
       ),
       body: SingleChildScrollView(
-        child: Column(
-         crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-             Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                     Input(
+                  Flexible(
+                    flex: 1,
+                    child: Input(
                       labelText: 'Radio',
                       hintText: '1.5',
                       value: _radio,
                       icon: Icons.circle_rounded,
                     ),
-                  
-                  const SizedBox(width: 10),
-                   Input(
-                    labelText: 'Altura',
-                    hintText: '2',
-                    value: _altura, 
-                    icon: Icons.height,
                   ),
-
+                  const SizedBox(width: 10),
+                  Flexible(
+                    flex: 1,
+                    child: Input(
+                      labelText: 'Altura',
+                      hintText: '2',
+                      value: _altura,
+                      icon: Icons.height,
+                    ),
+                  ),
                   const SizedBox(width: 10),
                   ElevatedButton(
-                    onPressed: (() {
+                    onPressed: () {
                       Calcular();
-                    }),
+                    },
                     child: const Text("Calcular"),
                   ),
                 ],
               ),
-           
-            if(messageError!='')Textmessage(message: messageError, title: 'Error'),
-           if (radio != 0 || altura != 0)
-              Column(
-                children: [
-                  Textmessage(message: "$resultadoAreaL", title: 'Area Lateral ', icon: Icons.area_chart),
-                  Textmessage(message: "$resultadoAreaT", title: 'Area Total ', icon: Icons.area_chart),
-                  Textmessage(message: "$resultadoVolumen", title: 'Volumen ',icon: Icons.square),
-                ],
-              ),
-          ],
+              const SizedBox(height: 20),
+              if (messageError != '')
+                Textmessage(message: messageError, title: 'Error'),
+              if (radio != 0 || altura != 0)
+                Column(
+                  children: [
+                    Textmessage(
+                        message: "$resultadoAreaL",
+                        title: 'Área Lateral ',
+                        icon: Icons.area_chart),
+                    Textmessage(
+                        message: "$resultadoAreaT",
+                        title: 'Área Total ',
+                        icon: Icons.area_chart),
+                    Textmessage(
+                        message: "$resultadoVolumen",
+                        title: 'Volumen ',
+                        icon: Icons.square),
+                  ],
+                ),
+            ],
+          ),
         ),
       ),
     );
